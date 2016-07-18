@@ -1,0 +1,29 @@
+  #contact.container {
+      padding: 80px 120px;
+  }
+  
+  .glyphicon.glyphicon-chevron-up {
+    font-size: 20px;
+	color: #333;
+}
+
+/*Add a dark gray background color to the modal header and center text --*/
+.modal-header, h4, .close {
+    background-color: #333;
+    color: #fff !important;
+    text-align: center;
+    font-size: 35px;
+	 padding: 20px;
+}
+
+.buttoncolor {
+	  padding: 10px 20px;
+      background-color: #333;
+      color: #f1f1f1;   
+	  
+  }
+  
+  #map {
+        height: 100%;
+      }
+
