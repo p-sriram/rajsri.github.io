@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Volunteer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width-device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" tyep="text/css" href="css/home_page.css">
+<script src="js/angular.js"/></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <!-- Add Google Maps -->
+
+
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50"  ng-app="myApp" ng-controller="frmCtrl">
+<!-- Navigation bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#myPage">HOME</a></li>
+        <li><a href="#tour">TOUR</a></li>
+        <li>
+     <a href="#signUp" data-toggle="modal" data-target="#myModal" ng-click="formReset()"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+        </li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</nav>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="images/image1.jpg" alt="New York" width="1450" height="575">
+      </div>
+
+      <div class="item">
+        <img src="images/image2.jpg" alt="Chicago" width="1450" height="575">
+      </div>
+    
+      <div class="item">
+        <img src="images/image3.jpg" alt="Los Angeles" width="1450" height="575">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog" >
+  <div  id="#signUp" class="container" >
+    <div class="modal-dialog">
+ <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Form Submission</h4>
+        </div>
+        <div class="modal-body">
+  <form name="signUpForm">
+    <div class="row">
+      <div class="col-sm-6">
+          <div>
+            <label class="control-label" for="inputLarge">Name</label>
+              <div class="row">
+                <div class="col-sm-6" ng-class="{'form-group has-error': signUpForm.fname.$dirty && signUpForm.fname.$invalid}"><input class="form-control  input-sm" name="fname" type="text" value="First Name" ng-model="formSubmitValue.fname" required></div>
+
+                <div class="col-sm-6" ng-class="{'form-group has-error': signUpForm.lname.$dirty && signUpForm.lname.$invalid}"><input class="form-control  input-sm" name="lname" type="text" value="Last Name" ng-model="formSubmitValue.lname" required></div>
+              </div>
+          </div>
+          <div ng-class="{'form-group has-error': signUpForm.username.$dirty && signUpForm.username.$invalid}"><br>
+            <label class="control-label" for="inputLarge">User Name</label>
+              <input class="form-control input-sm" type="text" name="username" ng-model="formSubmitValue.username" required>
+          </div><br>
+          <div ng-class="{'form-group has-error': signUpForm.email.$dirty && signUpForm.email.$invalid}">
+            <label class="control-label" for="inputLarge">Email </label>
+              <input class="form-control input-sm" type="email" name="email"  ng-model="formSubmitValue.email" required><br>
+          </div>
+          <div>
+            <label class="control-label" for="inputLarge">Gender</label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" name="gender" value="Male" ng-model="formSubmitValue.gender" required> Male </label>
+              <label>
+                <input type="radio" name="optionsRadios" name="gender" value="Female" ng-model="formSubmitValue.gender" > Female </label>
+            </div>
+          </div>
+          <div ng-class="{'form-group has-error': signUpForm.mobileno.$dirty && signUpForm.mobileno.$invalid}"><br>
+            <label class="control-label" for="inputLarge">Mobile Number</label>
+              <input class="form-control input-sm" type="text" ng-model="formSubmitValue.mobileno" maxlength="10" name="mobileno" id="mobileno" ng-pattern="/^[0-9]+$/" ng-minlength="10" required >
+          </div>
+      </div>
+      <div class="col-sm-6">
+          <div>
+            <label class="control-label" for="inputLarge">Skills</label>
+              <div class="checkbox"><label><input type="checkbox" ng-model="formSubmitValue.leadership">Leadership</label></div>
+              <div class="checkbox"><label><input type="checkbox" ng-model="formSubmitValue.problemSolving">Problem-solving and adaptability</label></div>
+              <div class="checkbox"><label><input type="checkbox" ng-model="formSubmitValue.timeMangement">Time management</label></div>
+              <div class="checkbox"><label><input type="checkbox" ng-model="formSubmitValue.communication">Communication</label></div>
+              <div class="checkbox"><label><input type="checkbox" ng-model="formSubmitValue.teamWork">Working as part of a team</label></div>
+          </div>
+          <div ng-class="{'form-group has-error': signUpForm.comments.$dirty && signUpForm.comments.$invalid}">
+            <label class="control-label" for="inputLarge">Comments and other Information </label>
+             <textarea class="form-control" rows="4" ng-model="formSubmitValue.comments" name="comments" required></textarea>
+            <span class="help-block">Give your comments and feedback</span>
+          </div>
+
+          <div class="modal-footer" style="float: right;">
+          <input class="btn btn-success buttoncolor" type="submit" ng-disabled="(signUpForm.$invalid || !(formSubmitValue.leadership || formSubmitValue.problemSolving || formSubmitValue.timeMangement || formSubmitValue.communication || formSubmitValue.teamWork))" ng-click="submitValue(formSubmitValue)" data-dismiss="modal" value="Join Now"></div>
+          <!-- <div style="float: right;"><button type="submit" class="btn btn-primary" ng-disabled="signUpForm.$invalid">Join Now</button></div> -->
+      </div>
+    </div>
+  </form>  
+</div></div></div></div></div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container">
+  <h3 class="text-center">Contact</h3>
+  <p class="text-center"><em>Contact us and we'll get back to you within 24 hours.</em></p></br>
+  <form name="contactForm" >
+  <div class="row">
+    <div class="col-md-4">
+      <p>Drop a note.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Coimbatore</p>
+      <p><span class="glyphicon glyphicon-phone"></span> Phone: +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> Email: mail@mail.com</p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group" ng-class="{'form-group has-error': contactForm.name.$dirty && contactForm.name.$invalid}">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" ng-model="contactSubmitValue.name"required><br/>
+
+           <div ng-class="{'form-group has-error': contactForm.contactnumber.$dirty && contactForm.contactnumber.$invalid}">
+          <input class="form-control" id="contactnumber" name="contactnumber" placeholder="Mobile Number" type="text" ng-model="contactSubmitValue.contactnumber" maxlength="10" ng-pattern="/^[0-9]+$/" ng-minlength="10" required>
+        </div>
+        </div>
+        <div class="col-sm-6 form-group"  ng-class="{'form-group has-error': contactForm.email.$dirty && contactForm.email.$invalid}">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" ng-model="contactSubmitValue.email"required>
+        </div>
+        </div>
+      <div ng-class="{'form-group has-error': contactForm.comments.$dirty && contactForm.comments.$invalid}">
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5" ng-model="contactSubmitValue.comments" required></textarea></div>
+      <br>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input class="btn pull-right btn btn-success buttoncolor" type="submit" ng-disabled="contactForm.$invalid" ng-click="submitContact(contactSubmitValue)" >
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+
+
+<!--Google Map-->
+<!-- Set height and width with CSS -->
+<div id="map"></div> 
+
+<!-- Footer -->
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+</footer>
+
+ 
+<script>
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip();
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+
+var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+
+
+
+var app=angular.module("myApp",[]);
+app.controller("frmCtrl",function($scope){
+
+$scope.formSubmitValue = {};
+$scope.formSubmitValue.leadership = false;
+$scope.formSubmitValue.problemSolving = false;
+$scope.formSubmitValue.timeMangement = false;
+$scope.formSubmitValue.communication = false;
+$scope.formSubmitValue.teamWork = false;
+$scope.contactSubmitValue = {};
+
+
+  $scope.submitValue = function (argumentVal) {
+    console.log(argumentVal);
+}
+    $(document).ready(function(){
+      $('#contactnumber,#mobileno').keypress(function(key){
+        if(key.charCode<48 || key.charCode>57)
+          return false;
+      });
+    });
+
+    $scope.submitContact = function (argumentVal) {
+    console.log(argumentVal);
+}
+  
+$scope.formReset=function(){
+    	$scope.formSubmitValue = {};
+
+    }
+$("#signUp").click(function(){
+    $("div").removeClass("has-error");
+});
+});
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdwdHxNQdgVZjgEh3rfJj1qOjpzolky4U&callback=initMap"
+    async defer></script>
+</body>
+</html>
